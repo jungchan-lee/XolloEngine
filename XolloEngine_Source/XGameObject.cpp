@@ -1,6 +1,6 @@
 #include "XGameObject.h"
 #include "XInput.h"
-
+#include "XTime.h"
 
 namespace xollo
 {
@@ -13,40 +13,42 @@ namespace xollo
 
 	void GameObject::Update()
 	{
+		const int speed = 100.0f;
+
 		switch (ObjectName)
 		{
 		case Red:
 			if (Input::GetKey(EKeyCode::A))	//문자열로 wasd로 변경 가능 'W'
 			{
-				mX -= 0.01f;
+				mX -= speed * Time::GetDeltaTime();
 			}
 			if (Input::GetKey(EKeyCode::D))
 			{
-				mX += 0.01f;
+				mX += speed * Time::GetDeltaTime();
 			}
 			if (Input::GetKey(EKeyCode::W))
 			{
-				mY -= 0.01f;
+				mY -= speed * Time::GetDeltaTime();
 			}
 			if (Input::GetKey(EKeyCode::S))
 			{
-				mY += 0.01f;
+				mY += speed * Time::GetDeltaTime();
 			}
 			break;
 		case Blue:
-			if (GetAsyncKeyState(VK_LEFT) & 0x8000)	//문자열로 wasd로 변경 가능 'W'
+			if (Input::GetKey(EKeyCode::Left))	//문자열로 wasd로 변경 가능 'W'
 			{
 				mX -= 0.01f;
 			}
-			if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
+			if (Input::GetKey(EKeyCode::Right))
 			{
 				mX += 0.01f;
 			}
-			if (GetAsyncKeyState(VK_UP) & 0x8000)
+			if (Input::GetKey(EKeyCode::Down))
 			{
 				mY -= 0.01f;
 			}
-			if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+			if (Input::GetKey(EKeyCode::Up))
 			{
 				mY += 0.01f;
 			}
