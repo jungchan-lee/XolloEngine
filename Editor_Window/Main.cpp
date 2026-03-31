@@ -6,7 +6,7 @@
 
 #include "../XolloEngine_Source/XApplication.h"
 
-Application App;
+xollo::Application application;
 
 #define MAX_LOADSTRING 100
 
@@ -30,7 +30,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
 	// TODO: 여기에 코드를 입력합니다.
-	App.test();
 	// 전역 문자열을 초기화합니다.
 	LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
 	LoadStringW(hInstance, IDC_EDITORWINDOW, szWindowClass, MAX_LOADSTRING);
@@ -70,9 +69,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 		else
 		{
-			int a = 0;
 			//메시지가 없을 경우 여기서 처리
 			//게임 로직
+			application.Run();
 		}
 	}
 
@@ -134,6 +133,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 	HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
+	application.Initialize(hWnd);
 	// 2개 이상의 윈도우 켜기 가능
 	/*HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);*/
@@ -194,38 +194,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 		PAINTSTRUCT ps;
 		HDC hdc = BeginPaint(hWnd, &ps);
-
-		// 파랑 브러쉬 생성
-		HBRUSH Brush = CreateSolidBrush(RGB(0, 0, 255)); // color 저장
-
-		// 파랑 브러쉬 DC에 선택, 그리고 흰색 브러쉬 변환
-		HBRUSH OldBrush = (HBRUSH)SelectObject(hdc, Brush);   //hdc 의 컬러값 변경, 기본값을 해당 brush 색을오 변경
-
-		Rectangle(hdc, 100, 100, 200, 200);
-
-		//다시 흰색 원본 브러쉬로 선택
-		(HBRUSH)SelectObject(hdc, OldBrush);
-
-		// 파랑 브러쉬 삭제
-		DeleteObject(Brush);
-
-		HPEN RedPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-		HPEN OldPen = (HPEN)SelectObject(hdc, RedPen);
-
-		Ellipse(hdc, 200, 200, 300, 300);
-
-		SelectObject(hdc, OldPen);
-		DeleteObject(RedPen);
-
-		// 기본으로 자주 사용되는 GDI 오브젝트를 미리 DC안에 만들어두었는데 
-		// 그 오브젝트들을 스톡 오브젝트라고 함
-
-		HBRUSH GrayBursh = (HBRUSH)GetStockObject(GRAY_BRUSH);
-		OldBrush = (HBRUSH)SelectObject(hdc, GrayBursh);
-
-		Rectangle(hdc, 400, 400, 500, 500);
-		SelectObject(hdc, OldBrush);
-
 
 		// TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
 		EndPaint(hWnd, &ps);

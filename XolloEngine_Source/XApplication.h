@@ -1,7 +1,30 @@
 #pragma once
-class Application
+#include "CommonInclude.h"
+#include "XGameObject.h"
+
+namespace xollo
 {
-public:
-	void test();
-};
+	class Application
+	{
+	public:
+		Application();
+		~Application();
+
+		void Initialize(HWND Hwnd);
+		void Run();
+		void Update();
+		void LateUpdate();
+		void Render();
+	
+	
+	
+	private:
+		HWND mHwnd;
+		HDC mHdc;
+		//플레이어
+		GameObject mPlayer;
+		GameObject RedPlayer;
+	};
+
+}
 
