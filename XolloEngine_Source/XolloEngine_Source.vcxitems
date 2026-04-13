@@ -16,14 +16,22 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)XComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)XEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)XScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)XSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XTime.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)XApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)XComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)XEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)XGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)XInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)XScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)XSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)XTime.cpp" />
   </ItemGroup>
 </Project>

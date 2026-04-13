@@ -128,6 +128,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="XLoadScene.h" />
+    <ClInclude Include="XPlayScene.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="XPlayScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

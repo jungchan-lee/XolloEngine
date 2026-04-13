@@ -5,112 +5,82 @@
 namespace xollo
 {
 	GameObject::GameObject()
+		: mX(0)
+		, mY(0)
 	{
 	}
 	GameObject::~GameObject()
 	{
 	}
 
+	void GameObject::Initialize()
+	{
+		for (Component* comp : Components)
+		{
+			comp->Initialize();
+		}
+	}
+
 	void GameObject::Update()
 	{
 		const int speed = 100.0f;
 
-		switch (ObjectName)
+
+		if (Input::GetKey(EKeyCode::A))	//문자열로 wasd로 변경 가능 'W'
 		{
-		case Red:
-			if (Input::GetKey(EKeyCode::A))	//문자열로 wasd로 변경 가능 'W'
-			{
-				mX -= speed * Time::GetDeltaTime();
-			}
-			if (Input::GetKey(EKeyCode::D))
-			{
-				mX += speed * Time::GetDeltaTime();
-			}
-			if (Input::GetKey(EKeyCode::W))
-			{
-				mY -= speed * Time::GetDeltaTime();
-			}
-			if (Input::GetKey(EKeyCode::S))
-			{
-				mY += speed * Time::GetDeltaTime();
-			}
-			break;
-		case Blue:
-			if (Input::GetKey(EKeyCode::Left))	//문자열로 wasd로 변경 가능 'W'
-			{
-				mX -= 0.01f;
-			}
-			if (Input::GetKey(EKeyCode::Right))
-			{
-				mX += 0.01f;
-			}
-			if (Input::GetKey(EKeyCode::Down))
-			{
-				mY -= 0.01f;
-			}
-			if (Input::GetKey(EKeyCode::Up))
-			{
-				mY += 0.01f;
-			}
-			break;
-		default:
-			break;
+			mX -= speed * Time::GetDeltaTime();
+		}
+		if (Input::GetKey(EKeyCode::D))
+		{
+			mX += speed * Time::GetDeltaTime();
+		}
+		if (Input::GetKey(EKeyCode::W))
+		{
+			mY -= speed * Time::GetDeltaTime();
+		}
+		if (Input::GetKey(EKeyCode::S))
+		{
+			mY += speed * Time::GetDeltaTime();
 		}
 
-		
+		for (Component* comp : Components)
+		{
+			comp->Update();
+		}
+
 	}
 
 	void GameObject::LateUpdate()
 	{
-
+		for (Component* comp : Components)
+		{
+			comp->LateUpdate();
+		}
 	}
 
 	void GameObject::Render(HDC hdc)
 	{
-		
+		// 파랑 브러쉬 생성
+		mBrush = CreateSolidBrush(RGB(rand() % 255, rand() % 255, rand() % 255)); // color 저장
 
-		switch (ObjectName)
+		// 파랑 브러쉬 DC에 선택, 그리고 흰색 브러쉬 변환
+		OldBrush = (HBRUSH)SelectObject(hdc, mBrush);   //hdc 의 컬러값 변경, 기본값을 해당 brush 색을오 변경
+
+		mPen = CreatePen(PS_SOLID, 2, RGB(rand() % 255, rand() % 255, rand() % 255));
+		OldPen = (HPEN)SelectObject(hdc, mPen);
+
+		Ellipse(hdc, mX, mY, 100 + mX, 100 + mY);
+
+		//다시 흰색 원본 브러쉬로 선택
+		SelectObject(hdc, OldBrush);
+
+		// 파랑 브러쉬 삭제
+		DeleteObject(mBrush);
+		DeleteObject(mPen);
+
+		for (Component* comp : Components)
 		{
-		case Red:
-			// 파랑 브러쉬 생성
-			mBrush = CreateSolidBrush(RGB(255, 0, 0)); // color 저장
-
-			// 파랑 브러쉬 DC에 선택, 그리고 흰색 브러쉬 변환
-			OldBrush = (HBRUSH)SelectObject(hdc, mBrush);   //hdc 의 컬러값 변경, 기본값을 해당 brush 색을오 변경
-
-			mPen = CreatePen(PS_SOLID, 2, RGB(0, 255, 0));
-			OldPen = (HPEN)SelectObject(hdc, mPen);
-
-			Rectangle(hdc, 100 + mX, 100 + mY, 200 + mX, 200 + mY);
-
-			//다시 흰색 원본 브러쉬로 선택
-			SelectObject(hdc, OldBrush);
-
-			// 파랑 브러쉬 삭제
-			DeleteObject(mBrush);
-			DeleteObject(mPen);
-			break;
-		case Blue:
-			// 파랑 브러쉬 생성
-			mBrush = CreateSolidBrush(RGB(0, 0, 255)); // color 저장
-
-			// 파랑 브러쉬 DC에 선택, 그리고 흰색 브러쉬 변환
-			OldBrush = (HBRUSH)SelectObject(hdc, mBrush);   //hdc 의 컬러값 변경, 기본값을 해당 brush 색을오 변경
-
-			mPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-			OldPen = (HPEN)SelectObject(hdc, mPen);
-
-			Rectangle(hdc, 500 + mX, 500 + mY, 700 + mX, 700 + mY);
-
-			//다시 흰색 원본 브러쉬로 선택
-			SelectObject(hdc, OldBrush);
-
-			// 파랑 브러쉬 삭제
-			DeleteObject(mBrush);
-			DeleteObject(mPen);
-			break;
-		default:
-			break;
+			comp->Render(hdc);
 		}
 	}
 }

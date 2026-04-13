@@ -17,7 +17,9 @@ namespace xollo
 		void LateUpdate();
 		void Render();
 	
-	
+	private:
+		void ClearRenderTarget();
+		void CopyRenderTarget(HDC Source, HDC Dest);
 	
 	private:
 		HWND mHwnd;
@@ -31,9 +33,9 @@ namespace xollo
 		UINT Width;
 		UINT Height;
 
-		//플레이어
-		GameObject mPlayer;
-		GameObject RedPlayer;
+
+		//std::vector<Scene*> Scenes;
+		//std::vector<GameObject*> GameObjects;
 	};
 
 }

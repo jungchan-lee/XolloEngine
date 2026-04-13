@@ -5,6 +5,8 @@
 #include "Editor_Window.h"
 
 #include "../XolloEngine_Source/XApplication.h"
+#include "../XolloEngine_Window/XLoadScene.h"
+
 
 xollo::Application application;
 
@@ -148,6 +150,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 	ShowWindow(hWnd, nCmdShow);
 	UpdateWindow(hWnd);
+
+	//Load Scenes
+	xollo::LoadScene();
 
 	return TRUE;
 }

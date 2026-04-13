@@ -1,6 +1,7 @@
 #include "XApplication.h"
 #include "XInput.h"
 #include "XTime.h"
+#include "XSceneManager.h"
 
 namespace xollo
 {
@@ -42,11 +43,7 @@ namespace xollo
 		HBITMAP OldBitMap = (HBITMAP)SelectObject(BackDC, BackBitMap);
 		DeleteObject(OldBitMap);
 
-
-		mPlayer.SetPosition(0, 0);
-		mPlayer.SetObjectName(EObjectName::Blue);
-		RedPlayer.SetPosition(0, 0);
-		RedPlayer.SetObjectName(EObjectName::Red);
+		SceneManager::Initialize();
 
 		Input::Initialize();
 		Time::Initialize();
@@ -63,8 +60,8 @@ namespace xollo
 	{
 		Input::Update();
 		Time::Update();
-		mPlayer.Update();
-		RedPlayer.Update();
+
+		SceneManager::Update();
 	}
 
 	void Application::LateUpdate()
@@ -74,13 +71,23 @@ namespace xollo
 
 	void Application::Render()
 	{
-		Rectangle(BackDC, 0, 0, 1600, 900);
-		Time::Render(BackDC);
+		ClearRenderTarget();
 
-		mPlayer.Render(BackDC);
-		RedPlayer.Render(BackDC);
+		Time::Render(BackDC);
+		SceneManager::Render(BackDC);
 
 		//backdc 그린거를 원본 dc에 옮겨야함
-		BitBlt(mHdc, 0, 0, Width, Height, BackDC, 0, 0, SRCCOPY);
+		CopyRenderTarget(BackDC, mHdc);
+	}
+
+	void Application::ClearRenderTarget()
+	{
+		Rectangle(BackDC, -1, -1, 1601, 901);
+	}
+
+	void Application::CopyRenderTarget(HDC Source, HDC Dest)
+	{
+		//back 버퍼에 복사한 그림을 main 버퍼에 올려
+		BitBlt(Dest, 0, 0, Width, Height, Source, 0, 0, SRCCOPY);
 	}
 }

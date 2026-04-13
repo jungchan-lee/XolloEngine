@@ -1,12 +1,6 @@
 #pragma once
 #include "CommonInclude.h"
-
-enum EObjectName
-{
-	Red,
-	Blue
-};
-
+#include "XComponent.h"
 
 namespace xollo
 {
@@ -16,9 +10,36 @@ namespace xollo
 		GameObject();
 		~GameObject();
 
-		void Update();
-		void LateUpdate();
-		void Render(HDC hdc);
+		virtual void Initialize();
+		virtual void Update();
+		virtual void LateUpdate();
+		virtual void Render(HDC hdc);
+
+		template <typename T>
+		T* AddComponent()
+		{
+			T* comp = new T();
+			comp->SetOwner(this);
+			Components.push_back(comp);
+
+			return comp;
+
+		}
+
+		template <typename T>
+		T* GetComponent()
+		{
+			T* component = nullptr;
+
+			for (Component* comp : Components)
+			{
+				component = dynamic_cast<T*>(comp);
+				if (component)
+					break;
+			}
+
+			return component;
+		}
 
 		void SetPosition(float x, float y)
 		{
@@ -29,18 +50,17 @@ namespace xollo
 		float GetPositionX() { return mX; }
 		float GetPositionY() { return mY; }
 
-		void SetObjectName(EObjectName PlayObjectName) { ObjectName = PlayObjectName; }
-
 	private:
 		//게임 오브젝트의 좌표
 		float mX;
 		float mY;
-		EObjectName ObjectName;
 
 		HBRUSH mBrush;
 		HBRUSH OldBrush;
 		HPEN mPen;
 		HPEN OldPen;
+
+		std::vector<Component*> Components;
 	};
 
 }
