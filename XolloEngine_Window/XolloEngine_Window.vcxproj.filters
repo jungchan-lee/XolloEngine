@@ -9,11 +9,15 @@
     <ClInclude Include="XLoadScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="XPlayScene.h" />
     <ClInclude Include="XPlayer.h" />
+    <ClInclude Include="XPlayScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="XPlayScene.cpp" />
     <ClCompile Include="XPlayer.cpp" />
+    <ClCompile Include="XPlayScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

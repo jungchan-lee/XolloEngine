@@ -14,16 +14,22 @@ namespace xollo
 	}
 	void PlayScene::Initialize()
 	{
-		Player* player = new Player();
+		//플레이어 생성
+		Player* bg = new Player();
 
-		Transform* Tform = player->AddComponent<Transform>();
-		Tform->SetPos(800, 450);
+		//플레이어에 트랜스폼 컴포넌트 등록
+		Transform* Tform = bg->AddComponent<Transform>();
+		Tform->SetPos(Vector2(0, 0));
 		Tform->SetName(L"Transform");
-
-		SpriteRender* SRender = player->AddComponent<SpriteRender>();
+		
+		//플레이어에 스프라이트 렌더 컴포넌트 등록
+		SpriteRender* SRender = bg->AddComponent<SpriteRender>();
 		SRender->SetName(L"SpriteRender");
+		SRender->ImageLoad(L"C:\\Users\\chan1\\source\\repos\\XolloEngine\\Resources\\CloudOcean.png");
 
-		AddGameObject(player);
+		//게임 오브젝트 배열에 추가
+		AddGameObject(bg);
+
 	}
 	void PlayScene::Update()
 	{

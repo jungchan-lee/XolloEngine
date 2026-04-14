@@ -10,6 +10,9 @@
 
 xollo::Application application;
 
+ULONG_PTR gpToken;								// GDI 시스템 초기화하면 발급되는 핸들(토큰), 나중에 종료할 때 필요
+Gdiplus::GdiplusStartupInput gpsi;				// GDI 시작할 때 필요한 설정값 구조체
+
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
@@ -87,6 +90,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 	}*/
 
+	// GDI 시스템 종료
+	// GDI 시스템 메모리 해제
+	Gdiplus::GdiplusShutdown(gpToken);
+
 	return (int)msg.wParam;
 }
 
@@ -150,6 +157,12 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 	ShowWindow(hWnd, nCmdShow);
 	UpdateWindow(hWnd);
+
+	//GDI 시스템 시작하는 코드
+	// GDI 라이브러리 초기화
+	// 이미지 처리, 2D 렌더링, PNG/JPG 로딩 등
+	//gpToken -> 초기화 성공 시 토큰 반환, gpsi -> 설정 값, Null -> 디버그 콜백 안써서 NULL
+	Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
 
 	//Load Scenes
 	xollo::LoadScene();

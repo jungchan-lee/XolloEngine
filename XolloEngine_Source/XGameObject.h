@@ -15,6 +15,7 @@ namespace xollo
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
+		//게임 오브젝트에 컴포넌트 추가 템플릿
 		template <typename T>
 		T* AddComponent()
 		{
@@ -26,6 +27,7 @@ namespace xollo
 
 		}
 
+		//게임 오브젝트가 가지고 있는 컴포넌트와 비교하여 반환
 		template <typename T>
 		T* GetComponent()
 		{
