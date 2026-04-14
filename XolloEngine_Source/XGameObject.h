@@ -40,26 +40,8 @@ namespace xollo
 
 			return component;
 		}
-
-		void SetPosition(float x, float y)
-		{
-			mX = x;
-			mY = y;
-		}
 		
-		float GetPositionX() { return mX; }
-		float GetPositionY() { return mY; }
-
 	private:
-		//게임 오브젝트의 좌표
-		float mX;
-		float mY;
-
-		HBRUSH mBrush;
-		HBRUSH OldBrush;
-		HPEN mPen;
-		HPEN OldPen;
-
 		std::vector<Component*> Components;
 	};
 

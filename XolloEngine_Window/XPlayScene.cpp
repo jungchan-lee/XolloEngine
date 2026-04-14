@@ -1,5 +1,8 @@
 #include "XPlayScene.h"
 #include "XGameObject.h"
+#include "XPlayer.h"
+#include "XTransform.h"
+#include "XSpriteRender.h"
 
 namespace xollo
 {
@@ -11,15 +14,16 @@ namespace xollo
 	}
 	void PlayScene::Initialize()
 	{
-		for (size_t i = 0; i < 100; i++)
-		{
-			GameObject* Object = new GameObject();
-			Object->SetPosition(rand() % 1600, rand() % 900);
-			AddGameObject(Object);
-		}
+		Player* player = new Player();
 
-		
+		Transform* Tform = player->AddComponent<Transform>();
+		Tform->SetPos(800, 450);
+		Tform->SetName(L"Transform");
 
+		SpriteRender* SRender = player->AddComponent<SpriteRender>();
+		SRender->SetName(L"SpriteRender");
+
+		AddGameObject(player);
 	}
 	void PlayScene::Update()
 	{

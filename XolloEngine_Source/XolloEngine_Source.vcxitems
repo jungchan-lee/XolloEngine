@@ -22,7 +22,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)XInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XSceneManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)XSpriteRender.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XTime.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)XTransform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)XApplication.cpp" />
@@ -32,6 +34,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)XInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)XScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)XSceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)XSpriteRender.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)XTime.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)XTransform.cpp" />
   </ItemGroup>
 </Project>

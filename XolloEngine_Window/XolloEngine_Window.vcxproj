@@ -129,9 +129,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="XLoadScene.h" />
+    <ClInclude Include="XPlayer.h" />
     <ClInclude Include="XPlayScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="XPlayer.cpp" />
     <ClCompile Include="XPlayScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
