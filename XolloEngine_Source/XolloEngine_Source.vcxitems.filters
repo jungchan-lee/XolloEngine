@@ -22,6 +22,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)XGameObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)XResource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)XResources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)XSpriteRender.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)XTransform.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)XLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)XApplication.h" />
@@ -48,6 +53,15 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)XGameObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)XResource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)XResources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)XSpriteRender.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)XTransform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)XEnums.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)XLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)XObject.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

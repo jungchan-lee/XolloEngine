@@ -1,11 +1,13 @@
 #include "XGameObject.h"
 #include "XInput.h"
 #include "XTime.h"
+#include "XTransform.h"
 
 namespace xollo
 {
 	GameObject::GameObject()
 	{
+		InitializeTransform();
 	}
 	GameObject::~GameObject()
 	{
@@ -67,5 +69,10 @@ namespace xollo
 		{
 			comp->Render(hdc);
 		}
+	}
+
+	void GameObject::InitializeTransform()
+	{
+		AddComponent<Transform>();
 	}
 }

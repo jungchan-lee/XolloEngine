@@ -4,11 +4,11 @@
 
 namespace xollo
 {
-	class PlayScene : public Scene
+	class TitleScene : public Scene
 	{
 	public:
-		PlayScene();
-		~PlayScene();
+		TitleScene();
+		~TitleScene();
 
 		void Initialize() override;
 		void Update() override;
@@ -18,9 +18,8 @@ namespace xollo
 		void OnEnter() override;
 		void OnExit() override;
 
-
 	private:
-		class Player* bg;
+
 	};
 }
 

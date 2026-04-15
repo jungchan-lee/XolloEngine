@@ -131,10 +131,12 @@
     <ClInclude Include="XLoadScene.h" />
     <ClInclude Include="XPlayer.h" />
     <ClInclude Include="XPlayScene.h" />
+    <ClInclude Include="XTitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XPlayer.cpp" />
     <ClCompile Include="XPlayScene.cpp" />
+    <ClCompile Include="XTitleScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

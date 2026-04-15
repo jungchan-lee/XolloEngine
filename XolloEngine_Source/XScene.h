@@ -1,6 +1,7 @@
 #pragma once
 #include "XEntity.h"
 #include "XGameObject.h"
+#include "XLayer.h"
 
 namespace xollo
 {
@@ -15,11 +16,17 @@ namespace xollo
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
-		void AddGameObject(GameObject* gameObjcet);
+		virtual void OnEnter();
+		virtual void OnExit();
+
+		void AddGameObject(GameObject* gameObjcet, const enums::ELayerType Type);
+		Layer* GetLayer(const enums::ELayerType Type) { return SceneLayer[(UINT)Type]; }
 
 	private:
-		std::vector<GameObject*> GameObjects;
+		void CreateLayer();
 
+	private:
+		std::vector<Layer*> SceneLayer;
 	};
 }
 

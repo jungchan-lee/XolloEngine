@@ -3,8 +3,9 @@
 namespace xollo
 {
 	Scene::Scene()
-		: GameObjects {}
+		: SceneLayer {}
 	{
+		CreateLayer();
 	}
 	Scene::~Scene()
 	{
@@ -12,34 +13,57 @@ namespace xollo
 
 	void Scene::Initialize()
 	{
-
+		for (Layer* layer : SceneLayer)
+		{
+			layer->Initialize();
+		}
 	}
 
 	void Scene::Update()
 	{
-		for (GameObject* GameObj : GameObjects)
+		for (Layer* layer : SceneLayer)
 		{
-			GameObj->Update();
+			layer->Update();
 		}
 	}
 
 	void Scene::LateUpdate()
 	{
-		for (GameObject* GameObj : GameObjects)
+		for (Layer* layer : SceneLayer)
 		{
-			GameObj->LateUpdate();
+			layer->LateUpdate();
 		}
 	}
 
 	void Scene::Render(HDC hdc)
 	{
-		for (GameObject* GameObj : GameObjects)
+		for (Layer* layer : SceneLayer)
 		{
-			GameObj->Render(hdc);
+			layer->Render(hdc);
 		}
 	}
-	void Scene::AddGameObject(GameObject* gameObjcet)
+
+	void Scene::OnEnter()
 	{
-		GameObjects.push_back(gameObjcet);
+		
+	}
+
+	void Scene::OnExit()
+	{
+		
+	}
+	
+	void Scene::AddGameObject(GameObject* gameObjcet, const enums::ELayerType Type)
+	{
+		SceneLayer[(UINT)Type]->AddGameObject(gameObjcet);
+	}
+	
+	void Scene::CreateLayer()
+	{
+		SceneLayer.resize((UINT)enums::ELayerType::Max);
+		for (size_t i = 0; i < (UINT)enums::ELayerType::Max; i++)
+		{
+			SceneLayer[i] = new Layer();
+		}
 	}
 }

@@ -13,10 +13,16 @@
     <ClInclude Include="XPlayScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="XTitleScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XPlayer.cpp" />
     <ClCompile Include="XPlayScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="XTitleScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
   </ItemGroup>

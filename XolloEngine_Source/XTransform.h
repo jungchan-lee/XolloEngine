@@ -17,7 +17,7 @@ namespace xollo
 		void LateUpdate()  override;
 		void Render(HDC hdc)  override;
 
-		void SetPos(Vector2 Pos) { mPosition.x = Pos.x; mPosition.y = Pos.y; }
+		void SetPosition(Vector2 Pos) { mPosition.x = Pos.x; mPosition.y = Pos.y; }
 		Vector2 GetPosition() { return mPosition; }
 
 

@@ -20,6 +20,7 @@ namespace xollo
 		T* AddComponent()
 		{
 			T* comp = new T();
+			comp->Initialize();
 			comp->SetOwner(this);
 			Components.push_back(comp);
 
@@ -42,6 +43,9 @@ namespace xollo
 
 			return component;
 		}
+
+	private:
+		void InitializeTransform();
 		
 	private:
 		std::vector<Component*> Components;

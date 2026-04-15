@@ -18,9 +18,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)XApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XEntity.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)XEnums.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)XLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)XObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XResources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)XScene.h" />
@@ -35,6 +38,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)XEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)XGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)XInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)XLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)XMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)XResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)XResources.cpp" />

@@ -11,6 +11,7 @@ namespace xollo
 		{
 			T* Scene = new T();
 			Scene->SetName(name);
+			ActiveScene = Scene;
 			Scene->Initialize();
 
 			Scenes.insert(std::make_pair(name, Scene));
@@ -18,20 +19,8 @@ namespace xollo
 			return Scene;
 		}
 
-		static Scene* LoadScene(const std::wstring& name)
-		{
-			std::map<std::wstring, Scene*>::iterator iter = Scenes.find(name);
-
-			if (iter == Scenes.end())
-			{
-				return nullptr;
-			}
-			
-			ActiveScene = iter->second;
-
-			return iter->second; //first∞° map¿« key, second∞° value
-			
-		}
+		static Scene* LoadScene(const std::wstring& name);
+		static Scene* GetActiveScene() { return ActiveScene; }
 
 		static void Initialize();
 		static void Update();
